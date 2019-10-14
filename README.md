@@ -97,7 +97,7 @@ The reason I included them is mainly for completeness and as a reference for oth
 Furthermore they are also an example of `chrome.runtime` 
 
 #### What does it actually do?
-This sample extension will add a `div` and a `button` inside it.
+This sample extension will add a `div` and a `button` inside it , as seen in the image below.
 Once you click on the button it will send  a `GET` request to `https://postman-echo.com/get` and print the response.
 
 ![How it looks](https://raw.githubusercontent.com/ohaddahan/how-to-build-react-chrome-extension/master/images/image2.png)
@@ -105,12 +105,25 @@ Once you click on the button it will send  a `GET` request to `https://postman-e
 #### How to load and debug it?
 
 ![Load and background script](https://raw.githubusercontent.com/ohaddahan/how-to-build-react-chrome-extension/master/images/image1.png)
+![Chrome console](https://raw.githubusercontent.com/ohaddahan/how-to-build-react-chrome-extension/master/images/image4.png)
+![Background console](https://raw.githubusercontent.com/ohaddahan/how-to-build-react-chrome-extension/master/images/image5.png)
 
+1. Load the unpacked extension , make sure you're in developer mode and you select the `build` directory.
+For more details see :
+[How to use React.js to create a cross-browser extension in 5 minutes](https://levelup.gitconnected.com/how-to-use-react-js-to-create-chrome-extension-in-5-minutes-2ddb11899815)
+[Chrome - Getting Started Tutorial](https://developer.chrome.com/extensions/getstarted) and 
 
+2. Enable background scripts , click on `background page (Inactive)` and it will turn to `background page`.
+And open `DevTools` for the background scripts, without this you won't see any `console.log` or 
+any other action done in the background
 
+3. Inside your regular Chrome , open `DevTools` and you'll see the prints coming from `contentScript.js`.
 
-#### How to use it?
+4. The response from `https://postman-echo.com/get` inside `DevTools`.
 
+5. The background `DevTools` as you can see by the title.
+
+6. The prints from `background.js` and response from `https://postman-echo.com/get` inside `DevTools`.
 
 #### Final thoughts
 While trying to do this I was trying to follow a few other examples as shown in the references section.
@@ -128,3 +141,4 @@ I hope this will help anyone else who would like to create a React-Chrome-Extens
 * [Content Security Policy (CSP)](https://developer.chrome.com/extensions/contentSecurityPolicy)
 * [Create React App - Advanced Configuration](https://create-react-app.dev/docs/advanced-configuration)
 * [chrome.runtime - Official Docs](https://developer.chrome.com/extensions/runtime)
+* [Chrome - Getting Started Tutorial](https://developer.chrome.com/extensions/getstarted)
