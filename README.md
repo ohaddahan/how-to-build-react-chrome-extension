@@ -24,21 +24,23 @@ Let me elaborate on the various issues I encountered while getting this to work.
 
 * `package.json` compatibility issues:
   * Changes done to `pacakge.json` by `./scripts/prep.js`:
-  > packageJSON['scripts']  = {
-  >   "start": "react-scripts start",
-  >   "eject": "react-scripts eject",
-  >   "test":  "react-scripts test",
-  >   "prebuild": "rm -fr build ; node scripts/validate.js",
-  >   "build": "npm-run-all build:*",
-  >   "build:app": "INLINE_RUNTIME_CHUNK=false react-scripts build",
-  >   "build:files":  "node ./scripts/build.js",
-  >   "prezip": "rm -fr *.zip",
-  >   "zip": "npm-run-all zip:*",
-  >   "zip:build": "cd build; zip -r ../build.zip * -x '*.DS_Store'",
-  >   "zip:src": "zip -r src.zip src package.json README.md public -x '*.DS_Store'",
-  >   "release": "npm-run-all build zip"
-  > };
-  > packageJSON['eslintConfig']  = { "extends": "react-app" };
+  ```javascript
+  packageJSON['scripts']  = {
+     "start": "react-scripts start",
+     "eject": "react-scripts eject",
+     "test":  "react-scripts test",
+     "prebuild": "rm -fr build ; node scripts/validate.js",
+     "build": "npm-run-all build:*",
+     "build:app": "INLINE_RUNTIME_CHUNK=false react-scripts build",
+     "build:files":  "node ./scripts/build.js",
+     "prezip": "rm -fr *.zip",
+     "zip": "npm-run-all zip:*",
+     "zip:build": "cd build; zip -r ../build.zip * -x '*.DS_Store'",
+     "zip:src": "zip -r src.zip src package.json README.md public -x '*.DS_Store'",
+     "release": "npm-run-all build zip"
+   };
+   packageJSON['eslintConfig']  = { "extends": "react-app" };
+  ```
   
   There were no changes done to `start` , `eject` and `test`.  
   `prezip` , `zip` , `zip:build` , `zip:src` and `release` are just regular helpers needed for any Chrome extension.                                                                                                 
@@ -93,6 +95,21 @@ Let me elaborate on the various issues I encountered while getting this to work.
 Included are simple `background.js` and `contentScript.js` which send a `GET` request to `https://postman-echo.com/get`.
 The reason I included them is mainly for completeness and as a reference for others on how they work with a React-Chrome-Extension.
 Furthermore they are also an example of `chrome.runtime` 
+
+#### What does it actually do?
+This sample extension will add a `div` and a `button` inside it.
+Once you click on the button it will send  a `GET` request to `https://postman-echo.com/get` and print the response.
+
+![How it looks](https://raw.githubusercontent.com/ohaddahan/how-to-build-react-chrome-extension/master/images/image2.png)
+
+#### How to load and debug it?
+
+![Load and background script](https://raw.githubusercontent.com/ohaddahan/how-to-build-react-chrome-extension/master/images/image1.png)
+
+
+
+
+#### How to use it?
 
 
 #### Final thoughts
