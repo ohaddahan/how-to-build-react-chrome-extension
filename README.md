@@ -63,17 +63,17 @@ Let me elaborate on the various issues I encountered while getting this to work.
 
     * [Create React App - Advanced Configuration](https://create-react-app.dev/docs/advanced-configuration)
     > By default, Create React App will embed the runtime script into index.html during the production build.
-    > When set to false, the script will not be embedded and will be imported as usual.
-    > This is normally required when dealing with CSP.
+      When set to false, the script will not be embedded and will be imported as usual.
+      This is normally required when dealing with CSP.
 
     * [Content Security Policy (CSP)](https://developer.chrome.com/extensions/contentSecurityPolicy)
     > Inline JavaScript will not be executed.
-    > This restriction bans both inline `<script>` blocks and inline event handlers (e.g. `<button onclick="...">`).
-    > The first restriction wipes out a huge class of cross-site scripting attacks by making it impossible for you to
-    > accidentally execute script provided by a malicious third-party.
-    > It does, however, require you to write your code with a clean separation between content and behavior 
-    > (which you should of course do anyway, right?). An example might make this clearer.
-    > You might try to write a Browser Action's popup as a single popup.html containing
+      This restriction bans both inline `<script>` blocks and inline event handlers (e.g. `<button onclick="...">`).
+      The first restriction wipes out a huge class of cross-site scripting attacks by making it impossible for you to
+      accidentally execute script provided by a malicious third-party.
+      It does, however, require you to write your code with a clean separation between content and behavior 
+      (which you should of course do anyway, right?). An example might make this clearer.
+      You might try to write a Browser Action's popup as a single popup.html containing
 
 
   * `script/build.js` is the last helper script we have, it simply runs `npx webpack` on the `contentScript.js` 
